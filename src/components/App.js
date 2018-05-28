@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 
-
 import { Navbar, NavItem, Nav, MenuItem, NavDropdown, Table } from 'react-bootstrap';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import {connect} from 'react-redux';
-
-import {fetchInfo} from '../actions/actions_info';
 
 
 class App extends Component {
@@ -99,7 +95,7 @@ const selectList = this.state.jsonList.map (  item => {
           <tbody>
             {this.state.jsonList.map(item => {
 
-              if ( selectedOption==='' || item.name===selectedOption.value) {
+              if (item.name===selectedOption.value) {
                 console.log(selectedOption);
               return (
                 <tr>

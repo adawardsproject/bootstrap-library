@@ -3,6 +3,7 @@ import {
 } from '../actions/actions_info'
 
 const info = (state = [], action) => {
+  console.log(action);
   switch (action.type) {
     case INFO_FETCHED:
       return action.payload
