@@ -13,7 +13,7 @@ class App extends Component {
 
     this.state = {
       selectedOption: '',
-      jsonlList: [],
+      jsonList: [],
     };
   };
 
@@ -42,6 +42,11 @@ class App extends Component {
   }
 
   render() {
+const selectList = this.state.jsonList.map (  item => {
+  return {
+    value : item.name, label :item.name }
+  });
+
 
     const { selectedOption } = this.state;
     return (
@@ -82,30 +87,32 @@ class App extends Component {
         <Table striped bordered condensed hover>
           <thead>
             <tr>
-              <th>#</th>
               <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Age</th>
+              <th>Company</th>
+              <th>address</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td colSpan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {this.state.jsonList.map(item => {
+
+              if (item.name===selectedOption.value) {
+                console.log(selectedOption);
+              return (
+                <tr>
+                  <td>{item.name
+                }</td>
+                  <td>{item.age}</td>
+                  <td>{item.company}</td>
+                  <td>{item.address}</td>
+                </tr>
+
+               
+                )
+              }
+            })}
+
+    
           </tbody>
         </Table>;
         <div className="container">
@@ -117,15 +124,16 @@ class App extends Component {
                 name="form-field-name"
                 value={selectedOption}
                 onChange={this.handleChange}
-                options={[
-                  { value: 'one', label: 'One' },
-                  { value: 'two', label: 'Two' },
-                ]}
+                options=
+                  {selectList}
+                 
+                
               />
               <hr />
               {this.state.jsonList.map(item => {
                 return (
-                  <p>{item.name}</p>
+                  <p>{item.name
+                  }</p>
                 )
               })}
 
